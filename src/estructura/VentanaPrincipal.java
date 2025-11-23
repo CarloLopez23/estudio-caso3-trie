@@ -25,11 +25,9 @@ public class VentanaPrincipal extends JFrame {
         setTitle("Texto predictivo con Trie");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // ---------- Panel del diccionario ----------
         JPanel panelDiccionario = new JPanel(new BorderLayout(5, 5));
         panelDiccionario.add(new JLabel("Diccionario:"), BorderLayout.NORTH);
 
@@ -42,10 +40,8 @@ public class VentanaPrincipal extends JFrame {
         JScrollPane scrollDiccionario = new JScrollPane(areaDiccionario);
         panelDiccionario.add(scrollDiccionario, BorderLayout.CENTER);
 
-        // ---------- Panel central: entrada + sugerencias ----------
         JPanel panelCentral = new JPanel(new BorderLayout(5, 5));
 
-        // Entrada de texto
         JPanel panelEntrada = new JPanel(new BorderLayout(5, 5));
         panelEntrada.add(new JLabel("Ingresar texto:"), BorderLayout.NORTH);
 
@@ -54,7 +50,6 @@ public class VentanaPrincipal extends JFrame {
 
         panelCentral.add(panelEntrada, BorderLayout.NORTH);
 
-        // Área de sugerencias
         JPanel panelSugerencias = new JPanel(new BorderLayout(5, 5));
         panelSugerencias.add(new JLabel("Sugerencias:"), BorderLayout.NORTH);
 
@@ -68,15 +63,14 @@ public class VentanaPrincipal extends JFrame {
 
         panelCentral.add(panelSugerencias, BorderLayout.CENTER);
 
-        // Agregar todo al panel principal
         panelPrincipal.add(panelDiccionario, BorderLayout.NORTH);
         panelPrincipal.add(panelCentral, BorderLayout.CENTER);
 
         setContentPane(panelPrincipal);
         pack();
-        setLocationRelativeTo(null); // centrar ventana en pantalla
+        setLocationRelativeTo(null);
 
-        // ---------- Listener para el texto ingresado ----------
+        // listener para el texto ingresado
         campoTexto.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
