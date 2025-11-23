@@ -1,20 +1,26 @@
-import estructura.Trie;
+import estructura.TextoPredictivoService;
+import java.util.List;
+
 
 public class Main {
     public static void main(String[] args) {
 
-        Trie trie = new Trie();
+        List<String> diccionario = List.of(
+                "casa", "casita", "caso", "cascada",
+                "perro", "persona", "permiso",
+                "computadora", "comer", "cometa"
+        );
 
-        trie.insertarPalabra("Perro");
-        trie.insertarPalabra("Persona");
-        trie.insertarPalabra("Permiso");
-        trie.insertarPalabra("Maestro");
-        trie.insertarPalabra("Mar");
-        trie.insertarPalabra("Mamá");
+        TextoPredictivoService servicio = new TextoPredictivoService();
+        servicio.cargarDiccionario(diccionario);
 
-        System.out.println("Prefijo 'Per': " + trie.obtenerSugerencias("Per"));
-        System.out.println("Prefijo 'Pe': " + trie.obtenerSugerencias("Pe"));
-        System.out.println("Prefijo 'Ma': " + trie.obtenerSugerencias("Ma"));
-        System.out.println("Prefijo 'X': " + trie.obtenerSugerencias("X"));
+        // TEMPORAL hasta que exista la GUI
+        // new VentanaPrincipal(servicio);
+
+        // PRUEBAS
+        System.out.println(servicio.buscarSugerencias("pe"));
+        System.out.println(servicio.buscarSugerencias("ca"));
+        System.out.println(servicio.buscarSugerencias("com"));
     }
 }
+
