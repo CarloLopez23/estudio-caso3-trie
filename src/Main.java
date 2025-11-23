@@ -1,10 +1,12 @@
 import estructura.TextoPredictivoService;
-import java.util.List;
+import estructura.VentanaPrincipal;
 
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
+        // Diccionario base
         List<String> diccionario = List.of(
                 "casa", "casita", "caso", "cascada",
                 "perro", "persona", "permiso",
@@ -14,13 +16,9 @@ public class Main {
         TextoPredictivoService servicio = new TextoPredictivoService();
         servicio.cargarDiccionario(diccionario);
 
-        // TEMPORAL hasta que exista la GUI
-        // new VentanaPrincipal(servicio);
-
-        // PRUEBAS
-        System.out.println(servicio.buscarSugerencias("pe"));
-        System.out.println(servicio.buscarSugerencias("ca"));
-        System.out.println(servicio.buscarSugerencias("com"));
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            VentanaPrincipal ventana = new VentanaPrincipal(servicio, diccionario);
+            ventana.setVisible(true);
+        });
     }
 }
-
